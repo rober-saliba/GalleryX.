@@ -1,26 +1,831 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>galleryx-voyage-virtuelle</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalleryX - Virtual Museum Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/lovable-uploads/dd1fd631-090e-4f31-9b22-3b7cda541f07.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 70vh;
+        }
+        .museum-btn {
+            transition: all 0.3s ease;
+        }
+        .museum-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-card {
+            transition: all 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-black text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-bold">GalleryX</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#" class="hover:text-gray-300">Home</a>
+                <button id="loginBtn" class="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition">Login</button>
+            </div>
+        </div>
+    </nav>
 
-    <meta property="og:title" content="galleryx-voyage-virtuelle" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Hero Section -->
+    <section class="hero-image flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 heading">DISCOVER WITH GALLERYX</h1>
+            <p class="text-xl md:text-2xl mb-8">Immerse yourself in a world of art and culture</p>
+            <button id="exploreBtn" class="museum-btn bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg">Begin Your Virtual Journey Today</button>
+        </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 heading">Experience Art Like Never Before</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg text-center gallery-card">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Explore Galleries</h3>
+                    <p class="text-gray-600">Navigate through different rooms and discover masterpieces from various eras and styles.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg text-center gallery-card">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Learn Interactively</h3>
+                    <p class="text-gray-600">Each artifact comes with detailed descriptions, images, and audio explanations.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg text-center gallery-card">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Curated Experience</h3>
+                    <p class="text-gray-600">Enjoy a carefully crafted journey through art history, science, and culture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Highlight Gallery Preview -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 heading">Gallery Highlights</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png" alt="Ancient Art" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ancient Art</h3>
+                        <p class="text-gray-600 mb-4">Discover artifacts from ancient civilizations that shaped our world.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png" alt="Modern Masterpieces" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Modern Masterpieces</h3>
+                        <p class="text-gray-600 mb-4">Experience groundbreaking works that defined contemporary art movements.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png" alt="Interactive Exhibits" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Interactive Exhibits</h3>
+                        <p class="text-gray-600 mb-4">Engage with digital installations that bring art to life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-black text-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4 heading">Ready to Start Your Journey?</h2>
+            <p class="text-xl mb-8">Book a ticket now and begin exploring GalleryX</p>
+            <button id="ctaLoginBtn" class="museum-btn bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg">Book a Ticket</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold">GalleryX</h3>
+                    <p class="text-gray-400">A virtual journey through art and culture</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Contact Us</a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2025 GalleryX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Login</h2>
+                <button id="closeLoginBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            
+            <div class="mb-6">
+                <div class="flex space-x-4 mb-4">
+                    <button id="visitorLoginBtn" class="flex-1 bg-black text-white py-2 rounded">Visitor</button>
+                    <button id="adminLoginBtn" class="flex-1 bg-gray-200 text-gray-800 py-2 rounded">Admin</button>
+                </div>
+                
+                <div id="loginForm">
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-700 mb-2">Username</label>
+                        <input type="text" id="username" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="password" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button id="loginSubmitBtn" class="bg-black text-white px-6 py-2 rounded">Login</button>
+                        <button id="registerBtn" class="text-blue-600 hover:underline">Create Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Create Account</h2>
+                <button id="closeRegisterBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            
+            <div class="mb-6">
+                <div class="flex space-x-4 mb-4">
+                    <button id="visitorRegisterBtn" class="flex-1 bg-black text-white py-2 rounded">Visitor</button>
+                    <button id="adminRegisterBtn" class="flex-1 bg-gray-200 text-gray-800 py-2 rounded">Admin</button>
+                </div>
+                
+                <div id="registerForm">
+                    <div class="mb-4">
+                        <label for="registerName" class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="registerName" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="registerEmail" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="registerEmail" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="registerUsername" class="block text-gray-700 mb-2">Username</label>
+                        <input type="text" id="registerUsername" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="mb-6">
+                        <label for="registerPassword" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="registerPassword" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button id="registerSubmitBtn" class="bg-black text-white px-6 py-2 rounded">Register</button>
+                        <button id="backToLoginBtn" class="text-blue-600 hover:underline">Back to Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Purchase Modal -->
+    <div id="ticketModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Purchase Ticket</h2>
+                <button id="closeTicketBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            
+            <div class="mb-6">
+                <div class="border rounded p-4 mb-6">
+                    <h3 class="text-xl font-semibold mb-2">Virtual Tour Pass</h3>
+                    <p class="text-gray-600 mb-2">Full access to all galleries and exhibits</p>
+                    <p class="text-2xl font-bold">$15.00</p>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Payment Details</h3>
+                    <div class="mb-4">
+                        <label for="cardName" class="block text-gray-700 mb-2">Name on Card</label>
+                        <input type="text" id="cardName" class="w-full px-4 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cardNumber" class="block text-gray-700 mb-2">Card Number</label>
+                        <input type="text" id="cardNumber" class="w-full px-4 py-2 border rounded" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="flex-1">
+                            <label for="expiryDate" class="block text-gray-700 mb-2">Expiry Date</label>
+                            <input type="text" id="expiryDate" class="w-full px-4 py-2 border rounded" placeholder="MM/YY">
+                        </div>
+                        <div class="flex-1">
+                            <label for="cvv" class="block text-gray-700 mb-2">CVV</label>
+                            <input type="text" id="cvv" class="w-full px-4 py-2 border rounded" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="purchaseBtn" class="w-full bg-black text-white py-3 rounded font-semibold">Complete Purchase</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Tour Modal -->
+    <div id="startTourModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Start Your Virtual Tour</h2>
+                <button id="closeStartTourBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            
+            <div class="text-center mb-6">
+                <p class="text-green-600 text-xl mb-4">Your ticket has been purchased successfully!</p>
+                <p class="mb-4">You now have access to all galleries in GalleryX.</p>
+                <button id="beginTourBtn" class="bg-black text-white px-8 py-3 rounded font-semibold">Start Tour Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Museum Map Modal -->
+    <div id="mapModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-5xl w-full h-5/6 overflow-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">GalleryX - Museum Map</h2>
+                <button id="closeMapBtn" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div class="relative">
+                <img src="public/lovable-uploads/0439f8d2-ea78-41b9-af2b-294b91ca1d45.png" alt="Museum Map" class="w-full">
+                
+                <!-- Interactive Map Areas -->
+                <div id="ancientArt" class="absolute cursor-pointer hover:opacity-75 top-[20%] left-[20%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="modernMasterpieces" class="absolute cursor-pointer hover:opacity-75 top-[20%] left-[42.5%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="contemporaryArt" class="absolute cursor-pointer hover:opacity-75 top-[20%] right-[20%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="sculpture" class="absolute cursor-pointer hover:opacity-75 top-[42%] left-[20%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="specialExhibitions" class="absolute cursor-pointer hover:opacity-75 top-[42%] left-[42.5%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="photography" class="absolute cursor-pointer hover:opacity-75 top-[42%] right-[20%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="naturalHistory" class="absolute cursor-pointer hover:opacity-75 bottom-[20%] left-[20%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="interactiveExhibits" class="absolute cursor-pointer hover:opacity-75 bottom-[30%] left-[42.5%] w-[15%] h-[10%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+                
+                <div id="scienceTech" class="absolute cursor-pointer hover:opacity-75 bottom-[20%] right-[20%] w-[15%] h-[15%] bg-black bg-opacity-0 hover:bg-opacity-20 border-2 border-transparent hover:border-blue-500 transition-all rounded"></div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p>Click on any gallery to explore artifacts and exhibits</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery View Modal -->
+    <div id="galleryViewModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-6xl w-full h-5/6 overflow-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="galleryTitle" class="text-2xl font-bold">Gallery Title</h2>
+                <div class="flex items-center space-x-4">
+                    <button id="backToMapBtn" class="text-blue-600 hover:underline">Back to Map</button>
+                    <button id="closeGalleryBtn" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+            </div>
+            
+            <div id="galleryContent" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- This will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Artifact Detail Modal -->
+    <div id="artifactModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-4xl w-full h-5/6 overflow-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="artifactTitle" class="text-2xl font-bold">Artifact Title</h2>
+                <div class="flex items-center space-x-4">
+                    <button id="backToGalleryBtn" class="text-blue-600 hover:underline">Back to Gallery</button>
+                    <button id="closeArtifactBtn" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+            </div>
+            
+            <div id="artifactContent" class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <img id="artifactImage" src="" alt="Artifact" class="w-full rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2">About this Artifact</h3>
+                        <p id="artifactDescription" class="text-gray-700"></p>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2">Audio Explanation</h3>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <audio id="artifactAudio" controls class="w-full">
+                                <source src="" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Additional Information</h3>
+                        <p id="artifactInfo" class="text-gray-700"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Modal -->
+    <div id="adminDashboardModal" class="fixed inset-0 bg-gray-900 z-50 hidden overflow-auto">
+        <div class="min-h-screen">
+            <div class="flex">
+                <!-- Sidebar -->
+                <div class="w-64 bg-gray-800 text-white h-screen fixed">
+                    <div class="p-4 border-b border-gray-700">
+                        <h2 class="text-xl font-bold">GalleryX Admin</h2>
+                    </div>
+                    <nav class="p-4">
+                        <ul class="space-y-2">
+                            <li>
+                                <button id="dashboardNavBtn" class="w-full text-left py-2 px-4 rounded hover:bg-gray-700 bg-gray-700">Dashboard</button>
+                            </li>
+                            <li>
+                                <button id="artifactsNavBtn" class="w-full text-left py-2 px-4 rounded hover:bg-gray-700">Manage Artifacts</button>
+                            </li>
+                            <li>
+                                <button id="roomsNavBtn" class="w-full text-left py-2 px-4 rounded hover:bg-gray-700">Manage Rooms</button>
+                            </li>
+                            <li>
+                                <button id="visitorsNavBtn" class="w-full text-left py-2 px-4 rounded hover:bg-gray-700">Visitor Analytics</button>
+                            </li>
+                            <li>
+                                <button id="staffNavBtn" class="w-full text-left py-2 px-4 rounded hover:bg-gray-700">Staff Directory</button>
+                            </li>
+                            <li class="mt-8">
+                                <button id="adminLogoutBtn" class="w-full text-left py-2 px-4 rounded bg-red-600 hover:bg-red-700">Logout</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="ml-64 p-8 w-full">
+                    <!-- Dashboard Panel -->
+                    <div id="dashboardPanel" class="admin-panel">
+                        <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                            <div class="bg-white rounded-lg shadow p-6">
+                                <h3 class="text-xl font-bold mb-2">Today</h3>
+                                <p class="text-3xl font-bold">356</p>
+                                <p class="text-green-500">+12% from yesterday</p>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6">
+                                <h3 class="text-xl font-bold mb-2">This Week</h3>
+                                <p class="text-3xl font-bold">2,145</p>
+                                <p class="text-green-500">+8% from last week</p>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6">
+                                <h3 class="text-xl font-bold mb-2">This Month</h3>
+                                <p class="text-3xl font-bold">8,972</p>
+                                <p class="text-green-500">+15% from last month</p>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6">
+                                <h3 class="text-xl font-bold mb-2">Annual Projection</h3>
+                                <p class="text-3xl font-bold">104,835</p>
+                                <p class="text-gray-500">Based on current trends</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow p-6 mb-12">
+                            <h3 class="text-xl font-bold mb-4">Visitor Trends</h3>
+                            <img src="public/lovable-uploads/a1879fd4-baa9-4df8-99f3-900feef6c42d.png" alt="Visitor Trends Chart" class="w-full">
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h3 class="text-xl font-bold mb-4">Popular Galleries</h3>
+                            <div class="relative overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="px-6 py-3">Gallery</th>
+                                            <th class="px-6 py-3">Views</th>
+                                            <th class="px-6 py-3">Average Time (min)</th>
+                                            <th class="px-6 py-3">Trend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="px-6 py-4">Modern Masterpieces</td>
+                                            <td class="px-6 py-4">1,245</td>
+                                            <td class="px-6 py-4">18.5</td>
+                                            <td class="px-6 py-4 text-green-500">↑ 12%</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="px-6 py-4">Ancient Art</td>
+                                            <td class="px-6 py-4">987</td>
+                                            <td class="px-6 py-4">15.2</td>
+                                            <td class="px-6 py-4 text-green-500">↑ 8%</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="px-6 py-4">Interactive Exhibits</td>
+                                            <td class="px-6 py-4">842</td>
+                                            <td class="px-6 py-4">22.7</td>
+                                            <td class="px-6 py-4 text-green-500">↑ 15%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4">Photography</td>
+                                            <td class="px-6 py-4">756</td>
+                                            <td class="px-6 py-4">12.3</td>
+                                            <td class="px-6 py-4 text-red-500">↓ 3%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artifacts Management Panel -->
+                    <div id="artifactsPanel" class="admin-panel hidden">
+                        <h1 class="text-3xl font-bold mb-6">Manage Artifacts</h1>
+                        
+                        <div class="mb-6 flex justify-between items-center">
+                            <div class="relative">
+                                <input type="text" placeholder="Search artifacts..." class="pl-10 pr-4 py-2 border rounded-lg w-64">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                Add New Artifact
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow overflow-hidden">
+                            <table class="w-full">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left">Artifact</th>
+                                        <th class="px-6 py-3 text-left">Gallery</th>
+                                        <th class="px-6 py-3 text-left">Added Date</th>
+                                        <th class="px-6 py-3 text-left">Views</th>
+                                        <th class="px-6 py-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 flex items-center">
+                                            <div class="w-12 h-12 rounded-md overflow-hidden mr-3">
+                                                <img src="public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png" alt="Artifact" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Ancient Vase</p>
+                                                <p class="text-gray-500 text-sm">5th Century BC</p>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">Ancient Art</td>
+                                        <td class="px-6 py-4">2023-09-15</td>
+                                        <td class="px-6 py-4">346</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 flex items-center">
+                                            <div class="w-12 h-12 rounded-md overflow-hidden mr-3">
+                                                <img src="public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png" alt="Artifact" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Modern Sculpture</p>
+                                                <p class="text-gray-500 text-sm">1965</p>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">Modern Masterpieces</td>
+                                        <td class="px-6 py-4">2023-10-02</td>
+                                        <td class="px-6 py-4">289</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Rooms Management Panel -->
+                    <div id="roomsPanel" class="admin-panel hidden">
+                        <h1 class="text-3xl font-bold mb-6">Manage Museum Rooms</h1>
+                        
+                        <div class="mb-6 flex justify-between items-center">
+                            <div class="relative">
+                                <input type="text" placeholder="Search rooms..." class="pl-10 pr-4 py-2 border rounded-lg w-64">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                Add New Room
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow overflow-hidden">
+                            <table class="w-full">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left">Room Name</th>
+                                        <th class="px-6 py-3 text-left">Description</th>
+                                        <th class="px-6 py-3 text-left">Artifacts Count</th>
+                                        <th class="px-6 py-3 text-left">Last Updated</th>
+                                        <th class="px-6 py-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 font-medium">Ancient Art</td>
+                                        <td class="px-6 py-4">Gallery featuring artifacts from ancient civilizations</td>
+                                        <td class="px-6 py-4">24</td>
+                                        <td class="px-6 py-4">2023-11-05</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 font-medium">Modern Masterpieces</td>
+                                        <td class="px-6 py-4">Contemporary art from the 20th century</td>
+                                        <td class="px-6 py-4">18</td>
+                                        <td class="px-6 py-4">2023-11-12</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Visitor Analytics Panel -->
+                    <div id="visitorsPanel" class="admin-panel hidden">
+                        <h1 class="text-3xl font-bold mb-6">Visitor Analytics</h1>
+                        
+                        <div class="mb-10">
+                            <img src="public/lovable-uploads/cec25ffa-f604-444e-ac55-5db3c3a0e3cf.png" alt="Weekly Visitor Chart" class="w-full rounded-lg shadow">
+                        </div>
+                        
+                        <div class="mb-6 flex justify-between items-center">
+                            <div class="relative">
+                                <input type="text" placeholder="Search visitors..." class="pl-10 pr-4 py-2 border rounded-lg w-64">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <div class="flex space-x-4">
+                                <select class="border rounded-lg px-4 py-2">
+                                    <option>All Types</option>
+                                    <option>Adult</option>
+                                    <option>Student</option>
+                                    <option>Senior</option>
+                                </select>
+                                <input type="date" class="border rounded-lg px-4 py-2">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow overflow-hidden">
+                            <table class="w-full">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left">ID</th>
+                                        <th class="px-6 py-3 text-left">Name</th>
+                                        <th class="px-6 py-3 text-left">Type</th>
+                                        <th class="px-6 py-3 text-left">Date</th>
+                                        <th class="px-6 py-3 text-left">Time</th>
+                                        <th class="px-6 py-3 text-left">Ticket ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4">1</td>
+                                        <td class="px-6 py-4">John Smith</td>
+                                        <td class="px-6 py-4">Adult</td>
+                                        <td class="px-6 py-4">2023-10-25</td>
+                                        <td class="px-6 py-4">10:23 AM</td>
+                                        <td class="px-6 py-4">T-1001</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4">2</td>
+                                        <td class="px-6 py-4">Emma Johnson</td>
+                                        <td class="px-6 py-4">Adult</td>
+                                        <td class="px-6 py-4">2023-10-25</td>
+                                        <td class="px-6 py-4">10:45 AM</td>
+                                        <td class="px-6 py-4">T-1002</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4">3</td>
+                                        <td class="px-6 py-4">Michael Chen</td>
+                                        <td class="px-6 py-4">Student</td>
+                                        <td class="px-6 py-4">2023-10-25</td>
+                                        <td class="px-6 py-4">11:10 AM</td>
+                                        <td class="px-6 py-4">T-1003</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Staff Directory Panel -->
+                    <div id="staffPanel" class="admin-panel hidden">
+                        <h1 class="text-3xl font-bold mb-6">Staff Directory</h1>
+                        
+                        <div class="mb-6 flex justify-between items-center">
+                            <div class="relative">
+                                <input type="text" placeholder="Search by name, position, or department..." class="pl-10 pr-4 py-2 border rounded-lg w-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                Add Staff Member
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow overflow-hidden">
+                            <table class="w-full">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left">Name</th>
+                                        <th class="px-6 py-3 text-left">Position</th>
+                                        <th class="px-6 py-3 text-left">Department</th>
+                                        <th class="px-6 py-3 text-left">Email</th>
+                                        <th class="px-6 py-3 text-left">Phone</th>
+                                        <th class="px-6 py-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4">Sarah Johnson</td>
+                                        <td class="px-6 py-4">Museum Director</td>
+                                        <td class="px-6 py-4">Administration</td>
+                                        <td class="px-6 py-4">sjohnson@museum.com</td>
+                                        <td class="px-6 py-4">555-0101</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4">David Kim</td>
+                                        <td class="px-6 py-4">Curator</td>
+                                        <td class="px-6 py-4">Exhibits</td>
+                                        <td class="px-6 py-4">dkim@museum.com</td>
+                                        <td class="px-6 py-4">555-0102</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4">Maria Rodriguez</td>
+                                        <td class="px-6 py-4">Education Coordinator</td>
+                                        <td class="px-6 py-4">Education</td>
+                                        <td class="px-6 py-4">mrodriguez@museum.com</td>
+                                        <td class="px-6 py-4">555-0103</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <button class="text-blue-600 hover:text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/auth.js"></script>
+    <script src="js/gallery-data.js"></script>
+    <script src="js/tour.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>
