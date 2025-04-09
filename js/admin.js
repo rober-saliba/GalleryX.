@@ -115,6 +115,78 @@ function showRoomsPanel() {
     hideAllPanels();
     document.getElementById('roomsPanel').classList.remove('hidden');
     setActiveNavButton('roomsNavBtn');
+    displayRoomsManagement();
+}
+
+// Display rooms management interface
+function displayRoomsManagement() {
+    const roomsContainer = document.getElementById('roomsManagementContainer');
+    if (!roomsContainer) return;
+    
+    const galleryInfo = [
+        { id: 'ancientArt', name: 'Ancient Art', description: 'Discover artifacts from ancient civilizations that shaped our world.' },
+        { id: 'modernMasterpieces', name: 'Modern Masterpieces', description: 'Experience groundbreaking works that defined contemporary art movements.' },
+        { id: 'contemporaryArt', name: 'Contemporary Art', description: 'Explore cutting-edge works from today\'s most innovative artists.' },
+        { id: 'sculpture', name: 'Sculpture', description: 'Marvel at three-dimensional artworks from various periods and styles.' },
+        { id: 'specialExhibitions', name: 'Special Exhibitions', description: 'Limited-time exhibits featuring unique collections and themes.' },
+        { id: 'photography', name: 'Photography', description: 'Witness the world through the lenses of master photographers.' },
+        { id: 'naturalHistory', name: 'Natural History', description: 'Explore the wonders of our natural world and its fascinating history.' },
+        { id: 'interactiveExhibits', name: 'Interactive Exhibits', description: 'Engage with digital installations that bring art to life.' },
+        { id: 'scienceTech', name: 'Science & Technology', description: 'Discover the intersection of art, science, and technological innovation.' }
+    ];
+    
+    let html = `
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">Gallery Management</h3>
+            <p class="text-gray-500 mb-4">Manage museum galleries and their descriptions</p>
+            <button id="addNewGalleryBtn" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                Add New Gallery
+            </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    `;
+    
+    galleryInfo.forEach(gallery => {
+        html += `
+            <div class="bg-white rounded-lg p-4 shadow-md">
+                <h4 class="text-lg font-semibold">${gallery.name}</h4>
+                <p class="text-gray-600 my-2">${gallery.description}</p>
+                <div class="flex space-x-2 mt-4">
+                    <button class="edit-gallery-btn bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" data-id="${gallery.id}">
+                        Edit
+                    </button>
+                    <button class="view-artifacts-btn bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600" data-id="${gallery.id}">
+                        View Artifacts
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    roomsContainer.innerHTML = html;
+    
+    // Add event listeners
+    document.querySelectorAll('.edit-gallery-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const galleryId = this.getAttribute('data-id');
+            // Implement edit gallery functionality
+            alert('Edit gallery feature will be implemented soon: ' + galleryId);
+        });
+    });
+    
+    document.querySelectorAll('.view-artifacts-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const galleryId = this.getAttribute('data-id');
+            // Show artifacts for this gallery
+            alert('View artifacts feature will be implemented soon: ' + galleryId);
+        });
+    });
+    
+    document.getElementById('addNewGalleryBtn')?.addEventListener('click', function() {
+        // Add new gallery functionality
+        alert('Add new gallery feature will be implemented soon');
+    });
 }
 
 // Show visitor analytics panel

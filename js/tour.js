@@ -111,26 +111,101 @@ function backToMap() {
     openMap();
 }
 
+// Create interactive text-based map
+function createInteractiveMap() {
+    const mapContainer = document.getElementById('museumMapContainer');
+    
+    if (!mapContainer) {
+        console.error('Map container not found');
+        return;
+    }
+    
+    // Clear any existing content
+    mapContainer.innerHTML = '';
+    
+    // Create the museum map layout
+    const mapHTML = `
+        <div class="museum-map-layout w-full max-w-5xl mx-auto p-4">
+            <!-- Top Row -->
+            <div class="flex justify-center mb-8">
+                <div id="naturalHistory" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-blue-50 hover:bg-blue-100 hover:shadow-lg transition cursor-pointer mx-4 flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Natural History</h3>
+                    <p class="text-sm text-center">(Gallery D)</p>
+                </div>
+            </div>
+            
+            <!-- Middle Row -->
+            <div class="flex justify-center space-x-8 mb-8">
+                <div id="ancientArt" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-amber-50 hover:bg-amber-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Ancient Art</h3>
+                    <p class="text-sm text-center">(Gallery A)</p>
+                </div>
+                
+                <div id="modernMasterpieces" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-pink-50 hover:bg-pink-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Modern Masterpieces</h3>
+                    <p class="text-sm text-center">(Gallery B)</p>
+                </div>
+                
+                <div id="contemporaryArt" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-purple-50 hover:bg-purple-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Contemporary Art</h3>
+                    <p class="text-sm text-center">(Gallery C)</p>
+                </div>
+            </div>
+            
+            <!-- Middle-Bottom Row -->
+            <div class="flex justify-center space-x-8 mb-8">
+                <div id="specialExhibitions" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-green-50 hover:bg-green-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Special Exhibitions</h3>
+                    <p class="text-sm text-center">(Gallery F)</p>
+                </div>
+                
+                <div id="interactiveExhibits" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-cyan-50 hover:bg-cyan-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Interactive Exhibits</h3>
+                    <p class="text-sm text-center">(Gallery G)</p>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="flex justify-center space-x-8">
+                <div id="sculpture" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-orange-50 hover:bg-orange-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Sculpture</h3>
+                    <p class="text-sm text-center">(Gallery E)</p>
+                </div>
+                
+                <div id="photography" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-indigo-50 hover:bg-indigo-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Photography</h3>
+                    <p class="text-sm text-center">(Gallery H)</p>
+                </div>
+                
+                <div id="scienceTech" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-yellow-50 hover:bg-yellow-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">Science & Technology</h3>
+                    <p class="text-sm text-center">(Gallery I)</p>
+                </div>
+            </div>
+            
+            <!-- Map Legend -->
+            <div class="mt-8 p-4 bg-white rounded-lg shadow-md max-w-md mx-auto">
+                <h3 class="text-lg font-bold mb-2">Museum Map Legend</h3>
+                <p class="text-sm text-gray-600 mb-2">Click on any gallery to explore its exhibits</p>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+                    <p class="text-sm">You are here (Entrance)</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    mapContainer.innerHTML = mapHTML;
+    
+    // Add event listeners to gallery blocks
+    document.querySelectorAll('.gallery-block').forEach(block => {
+        block.addEventListener('click', () => openGallery(block.id));
+    });
+}
+
 // Set up event listeners for gallery areas on the map
 function initializeMapInteraction() {
-    const galleryAreas = [
-        'ancientArt',
-        'modernMasterpieces',
-        'contemporaryArt',
-        'sculpture',
-        'specialExhibitions',
-        'photography',
-        'naturalHistory',
-        'interactiveExhibits',
-        'scienceTech'
-    ];
-    
-    galleryAreas.forEach(galleryId => {
-        const element = document.getElementById(galleryId);
-        if (element) {
-            element.addEventListener('click', () => openGallery(galleryId));
-        }
-    });
+    // We'll use the createInteractiveMap function instead
 }
 
 // Initialize the tour
@@ -139,6 +214,8 @@ function initializeTour() {
     document.getElementById('beginTourBtn').addEventListener('click', function() {
         document.getElementById('startTourModal').classList.add('hidden');
         openMap();
+        // Create the interactive text-based map
+        createInteractiveMap();
     });
     
     // Set up map close button
@@ -155,9 +232,6 @@ function initializeTour() {
     
     // Set up back to map button
     document.getElementById('backToMapBtn').addEventListener('click', backToMap);
-    
-    // Initialize map interaction
-    initializeMapInteraction();
 }
 
 // Wait for DOM to be fully loaded before initializing
