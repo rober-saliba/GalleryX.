@@ -1,274 +1,228 @@
 
-// Gallery and artifacts data management
+// Gallery data for the virtual tour
 
-// Local storage key for gallery data
-const GALLERY_DATA_KEY = 'galleryX_gallery_data';
-
-// Initialize default gallery data if none exists
-function initializeGalleryData() {
-    if (!localStorage.getItem(GALLERY_DATA_KEY)) {
-        const defaultGalleries = {
-            'ancientArt': {
-                id: 'ancientArt',
-                name: 'Ancient Art',
-                description: 'Discover artifacts from ancient civilizations that shaped our world.',
-                artifacts: [
-                    {
-                        id: 'ancient1',
-                        title: 'Greek Amphora',
-                        description: 'This beautifully preserved amphora dates back to 500 BCE. It features intricate paintings depicting scenes from Greek mythology, specifically the twelve labors of Heracles. Amphorae like this were commonly used to store wine, olive oil, and grain.',
-                        image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
-                        audioSrc: 'https://example.com/audio/ancient1.mp3',
-                        additionalInfo: 'Created during the height of Athenian pottery, this piece showcases the black-figure technique that was popular during this period. The artist, while unknown, was likely part of a well-established workshop in Athens.'
-                    },
-                    {
-                        id: 'ancient2',
-                        title: 'Egyptian Hieroglyphics Tablet',
-                        description: 'This limestone tablet contains hieroglyphic inscriptions from the New Kingdom period. The text appears to be a passage from the Book of the Dead, containing spells to help the deceased navigate the afterlife.',
-                        image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
-                        audioSrc: 'https://example.com/audio/ancient2.mp3',
-                        additionalInfo: 'The tablet was discovered in a tomb near the Valley of the Kings in 1922. The preservation of the pigments is remarkable, giving us insight into how vibrant these inscriptions would have appeared to ancient Egyptians.'
-                    }
-                ]
+// Gallery and artifact data
+const galleries = [
+    {
+        id: 'ancientArt',
+        name: 'Ancient Art',
+        description: 'Discover artifacts from ancient civilizations that shaped our world.',
+        artifacts: [
+            {
+                id: 'ancient1',
+                title: 'Greek Amphora',
+                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                description: 'This beautifully preserved amphora dates back to 5th century BCE Greece. It features intricate black-figure decoration depicting scenes from Greek mythology.',
+                additionalInfo: 'Used for storing wine, oil, and other commodities, amphorae were essential vessels in ancient Mediterranean cultures. This example shows the skilled craftsmanship of Athenian potters.',
+                audioSrc: '#'
             },
-            'modernMasterpieces': {
-                id: 'modernMasterpieces',
-                name: 'Modern Masterpieces',
-                description: 'Experience groundbreaking works that defined contemporary art movements.',
-                artifacts: [
-                    {
-                        id: 'modern1',
-                        title: 'Abstract Expressionism No. 5',
-                        description: 'This large-scale canvas exemplifies the spontaneous, intuitive approach of abstract expressionism. The artist used dynamic brushstrokes and dripping techniques to create a sense of movement and emotional intensity.',
-                        image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
-                        audioSrc: 'https://example.com/audio/modern1.mp3',
-                        additionalInfo: 'Created in 1952, this work represents the post-war American art movement that emphasized freedom of expression and raw emotion over traditional techniques. The artist was influenced by surrealism and Eastern philosophy.'
-                    },
-                    {
-                        id: 'modern2',
-                        title: 'Cubist Portrait',
-                        description: 'This revolutionary portrait breaks down its subject into geometric forms, showcasing multiple perspectives simultaneously. The fragmented planes and muted color palette are hallmarks of analytical cubism.',
-                        image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
-                        audioSrc: 'https://example.com/audio/modern2.mp3',
-                        additionalInfo: 'Painted in 1912, this work challenged traditional notions of perspective and representation. The artist collaborated with several contemporaries to develop cubism, which would go on to influence numerous art movements throughout the 20th century.'
-                    }
-                ]
-            },
-            'contemporaryArt': {
-                id: 'contemporaryArt',
-                name: 'Contemporary Art',
-                description: 'Explore cutting-edge works by today\'s most innovative artists.',
-                artifacts: [
-                    {
-                        id: 'contemp1',
-                        title: 'Digital Landscape',
-                        description: 'This mixed-media installation combines digital projection with physical sculpture to create an immersive landscape experience. The piece responds to viewer movement, creating a unique interactive experience.',
-                        image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
-                        audioSrc: 'https://example.com/audio/contemp1.mp3',
-                        additionalInfo: 'Created in 2019, this work explores the intersection of technology, nature, and human perception. The artist used custom software and motion sensors to generate an ever-changing visual environment.'
-                    }
-                ]
-            },
-            'sculpture': {
-                id: 'sculpture',
-                name: 'Sculpture Gallery',
-                description: 'Witness the evolution of three-dimensional art throughout history.',
-                artifacts: [
-                    {
-                        id: 'sculpt1',
-                        title: 'Bronze Figure',
-                        description: 'This life-sized bronze sculpture depicts a human figure in motion, capturing a moment of dynamic tension. The surface treatment creates interesting light patterns that change as you move around the piece.',
-                        image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
-                        audioSrc: 'https://example.com/audio/sculpt1.mp3',
-                        additionalInfo: 'Cast using the lost-wax method, this sculpture demonstrates the artist\'s masterful understanding of human anatomy and movement. The patina was carefully developed to give the bronze a unique coloration.'
-                    }
-                ]
-            },
-            'specialExhibitions': {
-                id: 'specialExhibitions',
-                name: 'Special Exhibitions',
-                description: 'Rotating exhibits featuring unique collections and themes.',
-                artifacts: [
-                    {
-                        id: 'special1',
-                        title: 'Light Installation',
-                        description: 'This immersive light installation transforms the gallery space into a sea of color and movement. Hundreds of LED lights are programmed to create patterns that evolve over time.',
-                        image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
-                        audioSrc: 'https://example.com/audio/special1.mp3',
-                        additionalInfo: 'This installation is part of our "Art and Technology" special exhibition, running for three months. The artist spent over a year developing the custom software that controls the light patterns.'
-                    }
-                ]
-            },
-            'photography': {
-                id: 'photography',
-                name: 'Photography',
-                description: 'Capturing moments in time through the lens of master photographers.',
-                artifacts: [
-                    {
-                        id: 'photo1',
-                        title: 'Urban Landscape',
-                        description: 'This large-format photograph captures the urban landscape at dawn, when the city transitions from night to day. The long exposure creates a dreamlike quality, with streaks of light showing the movement of early morning traffic.',
-                        image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
-                        audioSrc: 'https://example.com/audio/photo1.mp3',
-                        additionalInfo: 'The photographer spent three weeks scouting locations before finding this perfect vantage point. The image is printed using archival pigment inks on museum-quality paper.'
-                    }
-                ]
-            },
-            'naturalHistory': {
-                id: 'naturalHistory',
-                name: 'Natural History',
-                description: 'Exploring the natural world through specimens and interactive displays.',
-                artifacts: [
-                    {
-                        id: 'natural1',
-                        title: 'Fossil Collection',
-                        description: 'This collection of fossils spans over 100 million years of evolution, from early marine invertebrates to mammalian specimens. Each fossil has been carefully prepared to highlight its key features.',
-                        image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
-                        audioSrc: 'https://example.com/audio/natural1.mp3',
-                        additionalInfo: 'Many of these specimens were collected during expeditions in the 1950s. Modern scanning techniques have allowed researchers to study the internal structures without damaging these priceless artifacts.'
-                    }
-                ]
-            },
-            'scienceTech': {
-                id: 'scienceTech',
-                name: 'Science & Technology',
-                description: 'Innovations and discoveries that shaped our modern world.',
-                artifacts: [
-                    {
-                        id: 'science1',
-                        title: 'Early Computing Device',
-                        description: 'This early mechanical computing device from the 1940s was used for complex mathematical calculations. It represents a crucial step in the development of modern computers.',
-                        image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
-                        audioSrc: 'https://example.com/audio/science1.mp3',
-                        additionalInfo: 'Only five of these devices were ever built, and this is one of only two that remain functional. It contains over 3,000 precision-engineered parts and can perform calculations that would have taken human computers days to complete.'
-                    }
-                ]
-            },
-            'interactiveExhibits': {
-                id: 'interactiveExhibits',
-                name: 'Interactive Exhibits',
-                description: 'Hands-on experiences that make learning fun and engaging.',
-                artifacts: [
-                    {
-                        id: 'interactive1',
-                        title: 'Virtual Reality Experience',
-                        description: 'This VR installation allows visitors to step inside famous paintings and explore them in three dimensions. Using custom-developed software, artworks are transformed into immersive environments.',
-                        image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
-                        audioSrc: 'https://example.com/audio/interactive1.mp3',
-                        additionalInfo: 'Developed in collaboration with digital artists and art historians, this experience offers new perspectives on familiar masterpieces. The programming team spent over a year recreating the details of each painting in 3D space.'
-                    }
-                ]
+            {
+                id: 'ancient2',
+                title: 'Roman Sculpture',
+                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                description: 'A marble bust of a Roman senator from the 1st century CE. The realistic portrayal captures the dignity and authority of the Roman elite.',
+                additionalInfo: 'Roman portraiture was revolutionary for its realism, often depicting subjects with their actual features rather than idealized versions.',
+                audioSrc: '#'
             }
-        };
-        
-        localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(defaultGalleries));
+        ]
+    },
+    {
+        id: 'modernMasterpieces',
+        name: 'Modern Masterpieces',
+        description: 'Experience groundbreaking works that defined contemporary art movements.',
+        artifacts: [
+            {
+                id: 'modern1',
+                title: 'Abstract Composition',
+                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                description: 'Created in 1945, this abstract composition represents the emotional turmoil of post-war Europe through bold colors and fragmented shapes.',
+                additionalInfo: 'The artist pioneered new techniques in abstract expressionism, using unconventional tools and materials to create textured surfaces.',
+                audioSrc: '#'
+            },
+            {
+                id: 'modern2',
+                title: 'Cubist Portrait',
+                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                description: 'This Cubist portrait from 1923 deconstructs the human face into geometric forms, challenging traditional notions of representation.',
+                additionalInfo: 'Cubism revolutionized European painting by abandoning perspective and showing multiple viewpoints simultaneously.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'contemporaryArt',
+        name: 'Contemporary Art',
+        description: 'Explore cutting-edge works from today\'s most innovative artists.',
+        artifacts: [
+            {
+                id: 'contemp1',
+                title: 'Digital Landscape',
+                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                description: 'This digital artwork blends traditional landscape painting techniques with algorithmic generation to create an ever-evolving vista.',
+                additionalInfo: 'The artist uses custom software to create works that change subtly over time, ensuring no viewer sees exactly the same image.',
+                audioSrc: '#'
+            },
+            {
+                id: 'contemp2',
+                title: 'Mixed Media Installation',
+                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                description: 'This immersive installation combines sculpture, video, sound, and light to explore themes of technology and human connection.',
+                additionalInfo: 'Visitors are encouraged to interact with elements of the installation, becoming part of the artwork themselves.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'sculpture',
+        name: 'Sculpture',
+        description: 'Marvel at three-dimensional artworks from various periods and styles.',
+        artifacts: [
+            {
+                id: 'sculpt1',
+                title: 'Bronze Figure',
+                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                description: 'This dynamic bronze sculpture captures the human form in motion, demonstrating the artist\'s mastery of anatomical detail.',
+                additionalInfo: 'Created using the lost-wax casting method, a technique that has remained largely unchanged for thousands of years.',
+                audioSrc: '#'
+            },
+            {
+                id: 'sculpt2',
+                title: 'Modern Abstract Form',
+                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                description: 'This steel and glass sculpture plays with light, shadow, and negative space to create a constantly changing visual experience.',
+                additionalInfo: 'The artist spent two years developing specialized techniques to join the seemingly incompatible materials.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'specialExhibitions',
+        name: 'Special Exhibitions',
+        description: 'Limited-time exhibits featuring unique collections and themes.',
+        artifacts: [
+            {
+                id: 'special1',
+                title: 'Featured Collection',
+                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                description: 'This traveling exhibition brings together rare artifacts and artworks never before displayed together.',
+                additionalInfo: 'Curated specifically for this museum, this unique collection will only be available for viewing until the end of the month.',
+                audioSrc: '#'
+            },
+            {
+                id: 'special2',
+                title: 'Guest Artist Showcase',
+                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                description: 'A showcase of new works by our featured contemporary artist, exploring themes of identity and belonging.',
+                additionalInfo: 'The artist will be present for a discussion and Q&A session on Saturday afternoons throughout the exhibition.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'photography',
+        name: 'Photography',
+        description: 'Witness the world through the lenses of master photographers.',
+        artifacts: [
+            {
+                id: 'photo1',
+                title: 'Urban Landscape Series',
+                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                description: 'This series of black and white photographs documents urban transformation over three decades in major global cities.',
+                additionalInfo: 'The photographer returned to the same locations every five years to capture the changing cityscape and its inhabitants.',
+                audioSrc: '#'
+            },
+            {
+                id: 'photo2',
+                title: 'Portrait Collection',
+                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                description: 'These intimate portraits capture the lives and stories of indigenous communities around the world.',
+                additionalInfo: 'The photographer spent over a decade building relationships with these communities before being granted permission to create these images.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'naturalHistory',
+        name: 'Natural History',
+        description: 'Explore the wonders of our natural world and its fascinating history.',
+        artifacts: [
+            {
+                id: 'natural1',
+                title: 'Dinosaur Fossil',
+                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                description: 'This remarkably preserved fossil of a Velociraptor shows exceptional detail, including traces of feather structures.',
+                additionalInfo: 'Discovered in Mongolia\'s Gobi Desert in 2015, this specimen has provided valuable information about dinosaur evolution.',
+                audioSrc: '#'
+            },
+            {
+                id: 'natural2',
+                title: 'Mineral Collection',
+                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                description: 'This stunning collection of rare minerals showcases the incredible diversity of Earth\'s geological formations.',
+                additionalInfo: 'Some specimens in this collection formed under extreme pressure over millions of years before being brought to the surface through volcanic activity.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'interactiveExhibits',
+        name: 'Interactive Exhibits',
+        description: 'Engage with digital installations that bring art to life.',
+        artifacts: [
+            {
+                id: 'interactive1',
+                title: 'Virtual Reality Experience',
+                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                description: 'Step into famous paintings and explore them from the inside in this groundbreaking VR installation.',
+                additionalInfo: 'Developed by a team of artists and technology specialists, this experience uses advanced spatial mapping to create immersive environments.',
+                audioSrc: '#'
+            },
+            {
+                id: 'interactive2',
+                title: 'Motion-Responsive Wall',
+                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                description: 'This large-scale installation responds to visitor movements, creating unique visual compositions for each interaction.',
+                additionalInfo: 'The system uses multiple depth sensors and projection mapping to create responsive environments that blend technology and art.',
+                audioSrc: '#'
+            }
+        ]
+    },
+    {
+        id: 'scienceTech',
+        name: 'Science & Technology',
+        description: 'Discover the intersection of art, science, and technological innovation.',
+        artifacts: [
+            {
+                id: 'tech1',
+                title: 'Historic Computing Devices',
+                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                description: 'This collection traces the evolution of computing from early mechanical calculators to modern microprocessors.',
+                additionalInfo: 'Includes working examples of significant machines that visitors can interact with to understand their historical significance.',
+                audioSrc: '#'
+            },
+            {
+                id: 'tech2',
+                title: 'AI Art Generation',
+                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                description: 'This exhibition explores how artificial intelligence is being used as a creative tool in contemporary art practice.',
+                additionalInfo: 'Features works created through collaboration between human artists and various AI systems, raising questions about creativity and authorship.',
+                audioSrc: '#'
+            }
+        ]
     }
+];
+
+// Function to get a gallery by ID
+function getGallery(id) {
+    console.log("Getting gallery:", id);
+    console.log("Available galleries:", galleries.map(g => g.id));
+    return galleries.find(gallery => gallery.id === id);
 }
 
-// Get all gallery data
-function getAllGalleries() {
-    const data = localStorage.getItem(GALLERY_DATA_KEY);
-    return data ? JSON.parse(data) : {};
-}
-
-// Get a specific gallery by ID
-function getGallery(galleryId) {
-    const galleries = getAllGalleries();
-    return galleries[galleryId] || null;
-}
-
-// Get a specific artifact by ID
+// Function to get an artifact by gallery ID and artifact ID
 function getArtifact(galleryId, artifactId) {
     const gallery = getGallery(galleryId);
     if (!gallery) return null;
     
-    return gallery.artifacts.find(artifact => artifact.id === artifactId) || null;
+    return gallery.artifacts.find(artifact => artifact.id === artifactId);
 }
-
-// Add a new gallery
-function addGallery(gallery) {
-    const galleries = getAllGalleries();
-    galleries[gallery.id] = gallery;
-    localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(galleries));
-    return gallery;
-}
-
-// Update an existing gallery
-function updateGallery(gallery) {
-    const galleries = getAllGalleries();
-    
-    if (!galleries[gallery.id]) {
-        return false;
-    }
-    
-    galleries[gallery.id] = gallery;
-    localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(galleries));
-    return gallery;
-}
-
-// Delete a gallery
-function deleteGallery(galleryId) {
-    const galleries = getAllGalleries();
-    
-    if (!galleries[galleryId]) {
-        return false;
-    }
-    
-    delete galleries[galleryId];
-    localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(galleries));
-    return true;
-}
-
-// Add a new artifact to a gallery
-function addArtifact(galleryId, artifact) {
-    const galleries = getAllGalleries();
-    
-    if (!galleries[galleryId]) {
-        return false;
-    }
-    
-    galleries[galleryId].artifacts.push(artifact);
-    localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(galleries));
-    return artifact;
-}
-
-// Update an existing artifact
-function updateArtifact(galleryId, artifact) {
-    const galleries = getAllGalleries();
-    
-    if (!galleries[galleryId]) {
-        return false;
-    }
-    
-    const artifactIndex = galleries[galleryId].artifacts.findIndex(a => a.id === artifact.id);
-    
-    if (artifactIndex === -1) {
-        return false;
-    }
-    
-    galleries[galleryId].artifacts[artifactIndex] = artifact;
-    localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(galleries));
-    return artifact;
-}
-
-// Delete an artifact
-function deleteArtifact(galleryId, artifactId) {
-    const galleries = getAllGalleries();
-    
-    if (!galleries[galleryId]) {
-        return false;
-    }
-    
-    const artifactIndex = galleries[galleryId].artifacts.findIndex(a => a.id === artifactId);
-    
-    if (artifactIndex === -1) {
-        return false;
-    }
-    
-    galleries[galleryId].artifacts.splice(artifactIndex, 1);
-    localStorage.setItem(GALLERY_DATA_KEY, JSON.stringify(galleries));
-    return true;
-}
-
-// Initialize gallery data
-initializeGalleryData();
