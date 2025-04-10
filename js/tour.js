@@ -125,7 +125,7 @@ function createInteractiveMap() {
     // Clear any existing content
     mapContainer.innerHTML = '';
     
-    // Create the museum map layout
+    // Create the museum map layout - REMOVED facility blocks as requested
     const mapHTML = `
         <div class="museum-map-layout w-full max-w-5xl mx-auto p-4">
             <!-- Top Row -->
@@ -143,20 +143,9 @@ function createInteractiveMap() {
                     <p class="text-sm text-center">(Gallery A)</p>
                 </div>
                 
-                <div class="flex flex-col space-y-4">
-                    <div id="specialExhibitions" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-green-50 hover:bg-green-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
-                        <h3 class="text-lg font-bold text-center">SPECIAL EXHIBITIONS</h3>
-                        <p class="text-sm text-center">(Gallery F)</p>
-                    </div>
-                    
-                    <div class="flex space-x-2">
-                        <div id="restrooms" class="facility-block w-32 h-20 border-2 border-gray-300 rounded-lg bg-gray-50 flex flex-col items-center justify-center p-2">
-                            <h3 class="text-sm font-bold text-center">RESTROOMS</h3>
-                        </div>
-                        <div id="infoDesk" class="facility-block w-32 h-20 border-2 border-gray-300 rounded-lg bg-gray-50 flex flex-col items-center justify-center p-2">
-                            <h3 class="text-sm font-bold text-center">INFO DESK</h3>
-                        </div>
-                    </div>
+                <div id="specialExhibitions" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-green-50 hover:bg-green-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">SPECIAL EXHIBITIONS</h3>
+                    <p class="text-sm text-center">(Gallery F)</p>
                 </div>
                 
                 <div id="contemporaryArt" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-purple-50 hover:bg-purple-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
@@ -165,51 +154,34 @@ function createInteractiveMap() {
                 </div>
             </div>
             
-            <!-- Bottom Half -->
-            <div class="flex justify-center space-x-8 mb-8">
-                <div class="flex flex-col space-y-4">
-                    <div id="sculpture" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-orange-50 hover:bg-orange-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
-                        <h3 class="text-lg font-bold text-center">SCULPTURE</h3>
-                        <p class="text-sm text-center">(Gallery E)</p>
-                    </div>
-                    
-                    <div id="naturalHistory" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-blue-50 hover:bg-blue-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
-                        <h3 class="text-lg font-bold text-center">NATURAL HISTORY</h3>
-                        <p class="text-sm text-center">(Gallery D)</p>
-                    </div>
+            <!-- Bottom Row -->
+            <div class="flex justify-center space-x-8">
+                <div id="sculpture" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-orange-50 hover:bg-orange-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">SCULPTURE</h3>
+                    <p class="text-sm text-center">(Gallery E)</p>
                 </div>
                 
-                <div class="flex flex-col space-y-4">
-                    <div id="interactiveExhibits" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-cyan-50 hover:bg-cyan-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
-                        <h3 class="text-lg font-bold text-center">INTERACTIVE EXHIBITS</h3>
-                        <p class="text-sm text-center">(Gallery I)</p>
-                    </div>
-                    
-                    <div class="flex space-x-4">
-                        <div id="cafe" class="facility-block w-32 h-20 border-2 border-gray-300 rounded-lg bg-gray-50 flex flex-col items-center justify-center p-2">
-                            <h3 class="text-sm font-bold text-center">CAFÉ</h3>
-                        </div>
-                        <div id="museumShop" class="facility-block w-32 h-20 border-2 border-gray-300 rounded-lg bg-gray-50 flex flex-col items-center justify-center p-2">
-                            <h3 class="text-sm font-bold text-center">MUSEUM SHOP</h3>
-                        </div>
-                    </div>
-                    
-                    <div id="entrance" class="facility-block w-full h-16 border-2 border-gray-300 rounded-lg bg-red-50 flex flex-col items-center justify-center p-2">
-                        <h3 class="text-sm font-bold text-center">MAIN ENTRANCE</h3>
-                        <p class="text-xs text-center">YOU ARE HERE</p>
-                    </div>
+                <div id="naturalHistory" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-blue-50 hover:bg-blue-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">NATURAL HISTORY</h3>
+                    <p class="text-sm text-center">(Gallery D)</p>
                 </div>
                 
-                <div class="flex flex-col space-y-4">
-                    <div id="photography" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-indigo-50 hover:bg-indigo-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
-                        <h3 class="text-lg font-bold text-center">PHOTOGRAPHY</h3>
-                        <p class="text-sm text-center">(Gallery H)</p>
-                    </div>
-                    
-                    <div id="scienceTech" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-yellow-50 hover:bg-yellow-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
-                        <h3 class="text-lg font-bold text-center">SCIENCE & TECH</h3>
-                        <p class="text-sm text-center">(Gallery J)</p>
-                    </div>
+                <div id="interactiveExhibits" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-cyan-50 hover:bg-cyan-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">INTERACTIVE EXHIBITS</h3>
+                    <p class="text-sm text-center">(Gallery I)</p>
+                </div>
+            </div>
+            
+            <!-- Bottom Row 2 -->
+            <div class="flex justify-center space-x-8 mt-8">
+                <div id="photography" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-indigo-50 hover:bg-indigo-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">PHOTOGRAPHY</h3>
+                    <p class="text-sm text-center">(Gallery H)</p>
+                </div>
+                
+                <div id="scienceTech" class="gallery-block w-64 h-36 border-2 border-gray-300 rounded-lg bg-yellow-50 hover:bg-yellow-100 hover:shadow-lg transition cursor-pointer flex flex-col items-center justify-center p-4">
+                    <h3 class="text-lg font-bold text-center">SCIENCE & TECH</h3>
+                    <p class="text-sm text-center">(Gallery J)</p>
                 </div>
             </div>
         </div>
@@ -259,4 +231,3 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM loaded, initializing tour");
     initializeTour();
 });
-
