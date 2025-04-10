@@ -1,104 +1,102 @@
-
 // Main application functionality
 
 // Initialize modals and UI interactions
 function initializeUI() {
     // Login button
-    document.getElementById('loginBtn').addEventListener('click', function() {
+    document.getElementById('loginBtn').addEventListener('click', function () {
         document.getElementById('loginModal').classList.remove('hidden');
     });
-    
+
     // Close login modal
-    document.getElementById('closeLoginBtn').addEventListener('click', function() {
+    document.getElementById('closeLoginBtn').addEventListener('click', function () {
         document.getElementById('loginModal').classList.add('hidden');
     });
-    
+
     // Switch between visitor and admin login
-    document.getElementById('visitorLoginBtn').addEventListener('click', function() {
-        this.classList.add('bg-black');
+    document.getElementById('visitorLoginBtn').addEventListener('click', function () {
+        this.classList.add('bg-black', 'text-white');
         this.classList.remove('bg-gray-200', 'text-gray-800');
-        this.classList.add('text-white');
         document.getElementById('adminLoginBtn').classList.remove('bg-black', 'text-white');
         document.getElementById('adminLoginBtn').classList.add('bg-gray-200', 'text-gray-800');
     });
-    
-    document.getElementById('adminLoginBtn').addEventListener('click', function() {
-        this.classList.add('bg-black');
+
+    document.getElementById('adminLoginBtn').addEventListener('click', function () {
+        this.classList.add('bg-black', 'text-white');
         this.classList.remove('bg-gray-200', 'text-gray-800');
-        this.classList.add('text-white');
         document.getElementById('visitorLoginBtn').classList.remove('bg-black', 'text-white');
         document.getElementById('visitorLoginBtn').classList.add('bg-gray-200', 'text-gray-800');
     });
-    
+
     // Register button
-    document.getElementById('registerBtn').addEventListener('click', function() {
+    document.getElementById('registerBtn').addEventListener('click', function () {
         document.getElementById('loginModal').classList.add('hidden');
         document.getElementById('registerModal').classList.remove('hidden');
     });
-    
+
     // Close register modal
-    document.getElementById('closeRegisterBtn').addEventListener('click', function() {
+    document.getElementById('closeRegisterBtn').addEventListener('click', function () {
         document.getElementById('registerModal').classList.add('hidden');
     });
-    
+
     // Back to login from register
-    document.getElementById('backToLoginBtn').addEventListener('click', function() {
+    document.getElementById('backToLoginBtn').addEventListener('click', function () {
         document.getElementById('registerModal').classList.add('hidden');
         document.getElementById('loginModal').classList.remove('hidden');
     });
-    
+
     // Switch between visitor and admin register
-    document.getElementById('visitorRegisterBtn').addEventListener('click', function() {
-        this.classList.add('bg-black');
+    document.getElementById('visitorRegisterBtn').addEventListener('click', function () {
+        this.classList.add('bg-black', 'text-white');
         this.classList.remove('bg-gray-200', 'text-gray-800');
-        this.classList.add('text-white');
         document.getElementById('adminRegisterBtn').classList.remove('bg-black', 'text-white');
         document.getElementById('adminRegisterBtn').classList.add('bg-gray-200', 'text-gray-800');
     });
-    
-    document.getElementById('adminRegisterBtn').addEventListener('click', function() {
-        this.classList.add('bg-black');
+
+    document.getElementById('adminRegisterBtn').addEventListener('click', function () {
+        this.classList.add('bg-black', 'text-white');
         this.classList.remove('bg-gray-200', 'text-gray-800');
-        this.classList.add('text-white');
         document.getElementById('visitorRegisterBtn').classList.remove('bg-black', 'text-white');
         document.getElementById('visitorRegisterBtn').classList.add('bg-gray-200', 'text-gray-800');
     });
-    
+
     // Close ticket purchase modal
-    document.getElementById('closeTicketBtn').addEventListener('click', function() {
+    document.getElementById('closeTicketBtn').addEventListener('click', function () {
         document.getElementById('ticketModal').classList.add('hidden');
     });
-    
+
     // Close start tour modal
-    document.getElementById('closeStartTourBtn').addEventListener('click', function() {
+    document.getElementById('closeStartTourBtn').addEventListener('click', function () {
         document.getElementById('startTourModal').classList.add('hidden');
     });
-    
-    // Login form submission - UPDATED for admin bypass
-    document.getElementById('loginSubmitBtn').addEventListener('click', function() {
+
+    // Login form submission with role-based validation
+    document.getElementById('loginSubmitBtn').addEventListener('click', function () {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
+        const loginType = document.getElementById('adminLoginBtn').classList.contains('bg-black') ? 'admin' : 'visitor';
+
         if (!username || !password) {
             alert('Please enter both username and password');
             return;
         }
-        
+
         const result = loginUser(username, password);
-        
+
         if (result.success) {
+            if (result.user.type !== loginType) {
+                alert(`You are not logged in as a ${loginType}.`);
+                return;
+            }
+
             document.getElementById('loginModal').classList.add('hidden');
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-            
+
             updateLoginStatus();
-            
-            // Check if user is admin - bypass ticket purchase completely
-            if (result.user.type === ADMIN) {
-                console.log("Admin logged in - direct to admin dashboard");
+
+            if (result.user.type === 'admin') {
                 showAdminDashboard();
             } else {
-                // For visitors, check if they already have a ticket
                 if (result.user.hasTicket) {
                     showStartTour();
                 } else {
@@ -109,41 +107,50 @@ function initializeUI() {
             alert(result.message || 'Login failed. Please try again.');
         }
     });
-    
-    // Registration form submission
-    document.getElementById('registerSubmitBtn').addEventListener('click', function() {
+
+    // ✅ Registration form submission (Fixed)
+    document.getElementById('registerSubmitBtn').addEventListener('click', function () {
         const name = document.getElementById('registerName').value;
         const email = document.getElementById('registerEmail').value;
         const username = document.getElementById('registerUsername').value;
         const password = document.getElementById('registerPassword').value;
-        
-        // Determine user type
-        const type = document.getElementById('visitorRegisterBtn').classList.contains('bg-black') ? VISITOR : ADMIN;
-        
+
+        const type = document.getElementById('visitorRegisterBtn').classList.contains('bg-black') ? 'visitor' : 'admin';
+
         if (!name || !email || !username || !password) {
             alert('Please fill in all fields');
             return;
         }
-        
+
         const result = registerUser(name, email, username, password, type);
-        
+
         if (result.success) {
-            alert('Registration successful! Please log in.');
-            document.getElementById('registerModal').classList.add('hidden');
-            document.getElementById('loginModal').classList.remove('hidden');
-            
-            // Clear fields
-            document.getElementById('registerName').value = '';
-            document.getElementById('registerEmail').value = '';
-            document.getElementById('registerUsername').value = '';
-            document.getElementById('registerPassword').value = '';
+            const loginResult = loginUser(username, password);
+            if (loginResult.success) {
+                const currentUser = loginResult.user;
+                document.getElementById('registerModal').classList.add('hidden');
+                updateLoginStatus();
+
+                if (currentUser.type === 'admin') {
+                    showAdminDashboard();
+                } else {
+                    showTicketPurchase();
+                }
+
+                // Clear fields
+                document.getElementById('registerName').value = '';
+                document.getElementById('registerEmail').value = '';
+                document.getElementById('registerUsername').value = '';
+                document.getElementById('registerPassword').value = '';
+            } else {
+                alert('Registration succeeded but auto-login failed.');
+            }
         } else {
             alert(result.message || 'Registration failed. Please try again.');
         }
     });
-    
-    // Purchase ticket button
-    document.getElementById('purchaseBtn').addEventListener('click', function() {
+
+    document.getElementById('purchaseBtn').addEventListener('click', function () {
         if (purchaseTicket()) {
             document.getElementById('ticketModal').classList.add('hidden');
             showStartTour();
@@ -151,14 +158,12 @@ function initializeUI() {
             alert('There was a problem purchasing your ticket. Please try again.');
         }
     });
-    
-    // Explore button - UPDATED for admin bypass
-    document.getElementById('exploreBtn').addEventListener('click', function() {
+
+    document.getElementById('exploreBtn').addEventListener('click', function () {
         const currentUser = getCurrentUser();
-        
+
         if (currentUser) {
-            if (currentUser.type === ADMIN) {
-                // Admin users bypass ticket purchase completely
+            if (currentUser.type === 'admin') {
                 showAdminDashboard();
             } else if (currentUser.hasTicket) {
                 showStartTour();
@@ -169,14 +174,12 @@ function initializeUI() {
             document.getElementById('loginModal').classList.remove('hidden');
         }
     });
-    
-    // CTA Login Button - UPDATED for admin bypass
-    document.getElementById('ctaLoginBtn').addEventListener('click', function() {
+
+    document.getElementById('ctaLoginBtn').addEventListener('click', function () {
         const currentUser = getCurrentUser();
-        
+
         if (currentUser) {
-            if (currentUser.type === ADMIN) {
-                // Admin users bypass ticket purchase completely
+            if (currentUser.type === 'admin') {
                 showAdminDashboard();
             } else if (currentUser.hasTicket) {
                 showStartTour();
@@ -189,58 +192,49 @@ function initializeUI() {
     });
 }
 
-// Show ticket purchase modal
 function showTicketPurchase() {
     document.getElementById('ticketModal').classList.remove('hidden');
 }
 
-// Show start tour modal
 function showStartTour() {
     document.getElementById('startTourModal').classList.remove('hidden');
 }
 
-// Update UI based on login status
 function updateLoginStatus() {
     const currentUser = getCurrentUser();
-    
+
     if (currentUser) {
-        // User is logged in
         document.getElementById('loginBtn').textContent = 'Logout';
-        document.getElementById('loginBtn').addEventListener('click', function(e) {
+        document.getElementById('loginBtn').addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             logoutUser();
             updateLoginStatus();
-            location.reload(); // Reload page to reset state
+            location.reload();
         }, { once: true });
     } else {
-        // User is logged out
         document.getElementById('loginBtn').textContent = 'Login';
-        document.getElementById('loginBtn').addEventListener('click', function() {
+        document.getElementById('loginBtn').addEventListener('click', function () {
             document.getElementById('loginModal').classList.remove('hidden');
         }, { once: true });
     }
 }
 
-// Check if user is already logged in on page load
 function checkAutologin() {
     const currentUser = getCurrentUser();
-    
+
     if (currentUser) {
         updateLoginStatus();
-        
-        // If admin is logged in, show admin dashboard directly
-        if (currentUser.type === ADMIN) {
+
+        if (currentUser.type === 'admin') {
             showAdminDashboard();
         } else if (currentUser.hasTicket) {
-            // If visitor with ticket, they can start tour directly
-            document.getElementById('startTourBtn').classList.remove('hidden');
+            document.getElementById('startTourBtn')?.classList.remove('hidden');
         }
     }
 }
 
-// Initialize application
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeUI();
     checkAutologin();
 });

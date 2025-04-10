@@ -94,7 +94,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DP152210.jpg" alt="Ancient Art" class="w-full h-64 object-cover">
+                    <img src="images/download.jpeg" alt="Ancient Art" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Ancient Art</h3>
                         <p class="text-gray-600 mb-4">Discover artifacts from ancient civilizations that shaped our world.</p>
@@ -102,7 +102,7 @@
                 </div>
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="https://www.moma.org/media/W1siZiIsIjM4NjQ3MCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA5MCAtcmVzaXplIDIwMDB4MjAwMFx1MDAzZSJdXQ.jpg?sha=95e5a767c90adf83" alt="Modern Masterpieces" class="w-full h-64 object-cover">
+                    <img src="images/modern.jpeg" alt="Modern Masterpieces" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Modern Masterpieces</h3>
                         <p class="text-gray-600 mb-4">Experience groundbreaking works that defined contemporary art movements.</p>
@@ -110,7 +110,7 @@
                 </div>
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="https://cdn.vox-cdn.com/thumbor/TAzotU1RnNkUJ7RwRmRkRgRjLqM=/0x0:2048x1365/1200x800/filters:focal(861x520:1187x846)/cdn.vox-cdn.com/uploads/chorus_image/image/56990837/TeamLab_09_Borderless.0.jpg" alt="Interactive Exhibits" class="w-full h-64 object-cover">
+                    <img src="images/images.jpeg" alt="Interactive Exhibits" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Interactive Exhibits</h3>
                         <p class="text-gray-600 mb-4">Engage with digital installations that bring art to life.</p>
@@ -353,11 +353,12 @@
     </div>
 
     <!-- Admin Dashboard Modal -->
-    <div id="adminDashboardModal" class="fixed inset-0 bg-gray-900 z-50 hidden overflow-auto">
+    <div id="adminDashboardModal" class="fixed inset-0 bg-black z-50 hidden overflow-auto">
         <div class="min-h-screen">
             <div class="flex">
                 <!-- Sidebar -->
-                <div class="w-64 bg-gray-800 text-white h-screen fixed">
+                <div class="w-64 bg-black text-white h-screen fixed">
+
                     <div class="p-4 border-b border-gray-700">
                         <h2 class="text-xl font-bold">GalleryX Admin</h2>
                     </div>
@@ -386,10 +387,12 @@
                 </div>
                 
                 <!-- Main Content -->
-                <div class="ml-64 p-8 w-full">
+                <div class="ml-64 p-8 w-full bg-black">
+
                     <!-- Dashboard Panel -->
                     <div id="dashboardPanel" class="admin-panel">
-                        <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+                        <h1 class="text-3xl font-bold mb-6 text-white">Admin Dashboard</h1>
+
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                             <div class="bg-white rounded-lg shadow p-6">
@@ -416,7 +419,7 @@
                         
                         <div class="bg-white rounded-lg shadow p-6 mb-12">
                             <h3 class="text-xl font-bold mb-4">Visitor Trends</h3>
-                            <img src="public/lovable-uploads/a1879fd4-baa9-4df8-99f3-900feef6c42d.png" alt="Visitor Trends Chart" class="w-full">
+                            <img src="images/graph.png" alt="Visitor Trends Chart" class="w-full">
                         </div>
                         
                         <div class="bg-white rounded-lg shadow p-6">
@@ -464,7 +467,7 @@
                     
                     <!-- Artifacts Management Panel -->
                     <div id="artifactsPanel" class="admin-panel hidden">
-                        <h1 class="text-3xl font-bold mb-6">Manage Artifacts</h1>
+                        <h1 class="text-3xl font-bold mb-6 text-white">Manage Artifacts</h1>
                         
                         <div class="mb-6 flex justify-between items-center">
                             <div class="relative">
@@ -496,7 +499,7 @@
                                     <tr class="border-b">
                                         <td class="px-6 py-4 flex items-center">
                                             <div class="w-12 h-12 rounded-md overflow-hidden mr-3">
-                                                <img src="public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png" alt="Artifact" class="w-full h-full object-cover">
+                                                <img src="images/download.jpeg" alt="Artifact" class="w-full h-full object-cover">
                                             </div>
                                             <div>
                                                 <p class="font-medium">Ancient Vase</p>
@@ -524,7 +527,7 @@
                                     <tr class="border-b">
                                         <td class="px-6 py-4 flex items-center">
                                             <div class="w-12 h-12 rounded-md overflow-hidden mr-3">
-                                                <img src="public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png" alt="Artifact" class="w-full h-full object-cover">
+                                                <img src="images/images.jpeg" alt="Artifact" class="w-full h-full object-cover">
                                             </div>
                                             <div>
                                                 <p class="font-medium">Modern Sculpture</p>
@@ -556,7 +559,7 @@
                     
                     <!-- Rooms Management Panel -->
                     <div id="roomsPanel" class="admin-panel hidden">
-                        <h1 class="text-3xl font-bold mb-6">Manage Museum Rooms</h1>
+                        <h1 class="text-3xl font-bold mb-6 text-white">Manage Museum Rooms</h1>
                         
                         <div class="mb-6 flex justify-between items-center">
                             <div class="relative">
@@ -632,10 +635,10 @@
                     
                     <!-- Visitor Analytics Panel -->
                     <div id="visitorsPanel" class="admin-panel hidden">
-                        <h1 class="text-3xl font-bold mb-6">Visitor Analytics</h1>
+                        <h1 class="text-3xl font-bold mb-6 text-white">Visitor Analytics</h1>
                         
                         <div class="mb-10">
-                            <img src="public/lovable-uploads/cec25ffa-f604-444e-ac55-5db3c3a0e3cf.png" alt="Weekly Visitor Chart" class="w-full rounded-lg shadow">
+                            <img src="images/graph.png" alt="Weekly Visitor Chart" class="w-full rounded-lg shadow">
                         </div>
                         
                         <div class="mb-6 flex justify-between items-center">
@@ -700,7 +703,7 @@
                     
                     <!-- Staff Directory Panel -->
                     <div id="staffPanel" class="admin-panel hidden">
-                        <h1 class="text-3xl font-bold mb-6">Staff Directory</h1>
+                        <h1 class="text-3xl font-bold mb-6 text-white">Staff Directory</h1>
                         
                         <div class="mb-6 flex justify-between items-center">
                             <div class="relative">
