@@ -74,7 +74,7 @@ function initializeUI() {
         document.getElementById('startTourModal').classList.add('hidden');
     });
     
-    // Login form submission
+    // Login form submission - UPDATED for admin bypass
     document.getElementById('loginSubmitBtn').addEventListener('click', function() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
@@ -93,8 +93,9 @@ function initializeUI() {
             
             updateLoginStatus();
             
-            // Check if user is admin
+            // Check if user is admin - bypass ticket purchase
             if (result.user.type === ADMIN) {
+                console.log("Admin logged in - bypassing ticket purchase");
                 showAdminDashboard();
             } else {
                 // For visitors, check if they already have a ticket
@@ -151,12 +152,13 @@ function initializeUI() {
         }
     });
     
-    // Explore button (for non-logged in users)
+    // Explore button (for non-logged in users) - UPDATED for admin bypass
     document.getElementById('exploreBtn').addEventListener('click', function() {
         const currentUser = getCurrentUser();
         
         if (currentUser) {
             if (currentUser.type === ADMIN) {
+                // Admin users bypass ticket purchase
                 showAdminDashboard();
             } else if (currentUser.hasTicket) {
                 showStartTour();
@@ -168,12 +170,13 @@ function initializeUI() {
         }
     });
     
-    // CTA Login Button
+    // CTA Login Button - UPDATED for admin bypass
     document.getElementById('ctaLoginBtn').addEventListener('click', function() {
         const currentUser = getCurrentUser();
         
         if (currentUser) {
             if (currentUser.type === ADMIN) {
+                // Admin users bypass ticket purchase
                 showAdminDashboard();
             } else if (currentUser.hasTicket) {
                 showStartTour();
@@ -224,6 +227,11 @@ function checkAutologin() {
     
     if (currentUser) {
         updateLoginStatus();
+        
+        // If admin is logged in, show admin dashboard directly
+        if (currentUser.type === ADMIN) {
+            showAdminDashboard();
+        }
     }
 }
 

@@ -11,7 +11,7 @@ const galleries = [
             {
                 id: 'ancient1',
                 title: 'Greek Amphora',
-                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This beautifully preserved amphora dates back to 5th century BCE Greece. It features intricate black-figure decoration depicting scenes from Greek mythology.',
                 additionalInfo: 'Used for storing wine, oil, and other commodities, amphorae were essential vessels in ancient Mediterranean cultures. This example shows the skilled craftsmanship of Athenian potters.',
                 audioSrc: '#'
@@ -19,7 +19,7 @@ const galleries = [
             {
                 id: 'ancient2',
                 title: 'Roman Sculpture',
-                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'A marble bust of a Roman senator from the 1st century CE. The realistic portrayal captures the dignity and authority of the Roman elite.',
                 additionalInfo: 'Roman portraiture was revolutionary for its realism, often depicting subjects with their actual features rather than idealized versions.',
                 audioSrc: '#'
@@ -34,7 +34,7 @@ const galleries = [
             {
                 id: 'modern1',
                 title: 'Abstract Composition',
-                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                image: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'Created in 1945, this abstract composition represents the emotional turmoil of post-war Europe through bold colors and fragmented shapes.',
                 additionalInfo: 'The artist pioneered new techniques in abstract expressionism, using unconventional tools and materials to create textured surfaces.',
                 audioSrc: '#'
@@ -42,7 +42,7 @@ const galleries = [
             {
                 id: 'modern2',
                 title: 'Cubist Portrait',
-                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                image: 'https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This Cubist portrait from 1923 deconstructs the human face into geometric forms, challenging traditional notions of representation.',
                 additionalInfo: 'Cubism revolutionized European painting by abandoning perspective and showing multiple viewpoints simultaneously.',
                 audioSrc: '#'
@@ -57,7 +57,7 @@ const galleries = [
             {
                 id: 'contemp1',
                 title: 'Digital Landscape',
-                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This digital artwork blends traditional landscape painting techniques with algorithmic generation to create an ever-evolving vista.',
                 additionalInfo: 'The artist uses custom software to create works that change subtly over time, ensuring no viewer sees exactly the same image.',
                 audioSrc: '#'
@@ -65,7 +65,7 @@ const galleries = [
             {
                 id: 'contemp2',
                 title: 'Mixed Media Installation',
-                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                image: 'https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This immersive installation combines sculpture, video, sound, and light to explore themes of technology and human connection.',
                 additionalInfo: 'Visitors are encouraged to interact with elements of the installation, becoming part of the artwork themselves.',
                 audioSrc: '#'
@@ -80,7 +80,7 @@ const galleries = [
             {
                 id: 'sculpt1',
                 title: 'Bronze Figure',
-                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This dynamic bronze sculpture captures the human form in motion, demonstrating the artist\'s mastery of anatomical detail.',
                 additionalInfo: 'Created using the lost-wax casting method, a technique that has remained largely unchanged for thousands of years.',
                 audioSrc: '#'
@@ -88,7 +88,7 @@ const galleries = [
             {
                 id: 'sculpt2',
                 title: 'Modern Abstract Form',
-                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This steel and glass sculpture plays with light, shadow, and negative space to create a constantly changing visual experience.',
                 additionalInfo: 'The artist spent two years developing specialized techniques to join the seemingly incompatible materials.',
                 audioSrc: '#'
@@ -103,7 +103,7 @@ const galleries = [
             {
                 id: 'special1',
                 title: 'Featured Collection',
-                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                image: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This traveling exhibition brings together rare artifacts and artworks never before displayed together.',
                 additionalInfo: 'Curated specifically for this museum, this unique collection will only be available for viewing until the end of the month.',
                 audioSrc: '#'
@@ -111,7 +111,7 @@ const galleries = [
             {
                 id: 'special2',
                 title: 'Guest Artist Showcase',
-                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'A showcase of new works by our featured contemporary artist, exploring themes of identity and belonging.',
                 additionalInfo: 'The artist will be present for a discussion and Q&A session on Saturday afternoons throughout the exhibition.',
                 audioSrc: '#'
@@ -126,7 +126,7 @@ const galleries = [
             {
                 id: 'photo1',
                 title: 'Urban Landscape Series',
-                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                image: 'https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This series of black and white photographs documents urban transformation over three decades in major global cities.',
                 additionalInfo: 'The photographer returned to the same locations every five years to capture the changing cityscape and its inhabitants.',
                 audioSrc: '#'
@@ -134,7 +134,7 @@ const galleries = [
             {
                 id: 'photo2',
                 title: 'Portrait Collection',
-                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'These intimate portraits capture the lives and stories of indigenous communities around the world.',
                 additionalInfo: 'The photographer spent over a decade building relationships with these communities before being granted permission to create these images.',
                 audioSrc: '#'
@@ -149,7 +149,7 @@ const galleries = [
             {
                 id: 'natural1',
                 title: 'Dinosaur Fossil',
-                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                image: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This remarkably preserved fossil of a Velociraptor shows exceptional detail, including traces of feather structures.',
                 additionalInfo: 'Discovered in Mongolia\'s Gobi Desert in 2015, this specimen has provided valuable information about dinosaur evolution.',
                 audioSrc: '#'
@@ -157,7 +157,7 @@ const galleries = [
             {
                 id: 'natural2',
                 title: 'Mineral Collection',
-                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This stunning collection of rare minerals showcases the incredible diversity of Earth\'s geological formations.',
                 additionalInfo: 'Some specimens in this collection formed under extreme pressure over millions of years before being brought to the surface through volcanic activity.',
                 audioSrc: '#'
@@ -172,7 +172,7 @@ const galleries = [
             {
                 id: 'interactive1',
                 title: 'Virtual Reality Experience',
-                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                image: 'https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'Step into famous paintings and explore them from the inside in this groundbreaking VR installation.',
                 additionalInfo: 'Developed by a team of artists and technology specialists, this experience uses advanced spatial mapping to create immersive environments.',
                 audioSrc: '#'
@@ -180,7 +180,7 @@ const galleries = [
             {
                 id: 'interactive2',
                 title: 'Motion-Responsive Wall',
-                image: 'public/lovable-uploads/64deeb94-180d-4260-92c9-1c2b0ac5c3f2.png',
+                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This large-scale installation responds to visitor movements, creating unique visual compositions for each interaction.',
                 additionalInfo: 'The system uses multiple depth sensors and projection mapping to create responsive environments that blend technology and art.',
                 audioSrc: '#'
@@ -195,7 +195,7 @@ const galleries = [
             {
                 id: 'tech1',
                 title: 'Historic Computing Devices',
-                image: 'public/lovable-uploads/01f4464d-9d73-4532-8c52-76837d58b8d2.png',
+                image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This collection traces the evolution of computing from early mechanical calculators to modern microprocessors.',
                 additionalInfo: 'Includes working examples of significant machines that visitors can interact with to understand their historical significance.',
                 audioSrc: '#'
@@ -203,7 +203,7 @@ const galleries = [
             {
                 id: 'tech2',
                 title: 'AI Art Generation',
-                image: 'public/lovable-uploads/5ab958aa-e5a6-42aa-9917-9ecb0dab1d18.png',
+                image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 description: 'This exhibition explores how artificial intelligence is being used as a creative tool in contemporary art practice.',
                 additionalInfo: 'Features works created through collaboration between human artists and various AI systems, raising questions about creativity and authorship.',
                 audioSrc: '#'
