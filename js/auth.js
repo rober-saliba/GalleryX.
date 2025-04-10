@@ -25,7 +25,8 @@ function initializeUsers() {
                 password: 'visitor123',
                 email: 'visitor@example.com',
                 name: 'Test Visitor',
-                type: VISITOR
+                type: VISITOR,
+                hasTicket: false
             }
         ];
         
@@ -64,14 +65,14 @@ function registerUser(name, email, username, password, type) {
         };
     }
     
-    // Create new user
+    // Create new user - admin users don't need tickets
     const newUser = {
         name,
         email,
         username,
         password,
         type,
-        hasTicket: false
+        hasTicket: type === ADMIN ? true : false
     };
     
     users.push(newUser);
@@ -95,7 +96,7 @@ function loginUser(username, password) {
             name: user.name,
             email: user.email,
             type: user.type,
-            hasTicket: user.hasTicket
+            hasTicket: user.hasTicket || user.type === ADMIN // Admin users always have access
         };
         
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
@@ -128,6 +129,9 @@ function purchaseTicket() {
     const currentUser = getCurrentUser();
     if (!currentUser) return false;
     
+    // Admin users don't need tickets
+    if (currentUser.type === ADMIN) return true;
+    
     // Update user in local storage
     const users = getUsers();
     const userIndex = users.findIndex(u => u.username === currentUser.username);
@@ -147,7 +151,8 @@ function purchaseTicket() {
 // Check if current user has a ticket
 function hasTicket() {
     const currentUser = getCurrentUser();
-    return currentUser ? currentUser.hasTicket : false;
+    // Admin users always have access, visitors need tickets
+    return currentUser ? (currentUser.hasTicket || currentUser.type === ADMIN) : false;
 }
 
 // Initialize default users

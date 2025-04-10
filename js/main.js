@@ -93,9 +93,9 @@ function initializeUI() {
             
             updateLoginStatus();
             
-            // Check if user is admin - bypass ticket purchase
+            // Check if user is admin - bypass ticket purchase completely
             if (result.user.type === ADMIN) {
-                console.log("Admin logged in - bypassing ticket purchase");
+                console.log("Admin logged in - direct to admin dashboard");
                 showAdminDashboard();
             } else {
                 // For visitors, check if they already have a ticket
@@ -152,13 +152,13 @@ function initializeUI() {
         }
     });
     
-    // Explore button (for non-logged in users) - UPDATED for admin bypass
+    // Explore button - UPDATED for admin bypass
     document.getElementById('exploreBtn').addEventListener('click', function() {
         const currentUser = getCurrentUser();
         
         if (currentUser) {
             if (currentUser.type === ADMIN) {
-                // Admin users bypass ticket purchase
+                // Admin users bypass ticket purchase completely
                 showAdminDashboard();
             } else if (currentUser.hasTicket) {
                 showStartTour();
@@ -176,7 +176,7 @@ function initializeUI() {
         
         if (currentUser) {
             if (currentUser.type === ADMIN) {
-                // Admin users bypass ticket purchase
+                // Admin users bypass ticket purchase completely
                 showAdminDashboard();
             } else if (currentUser.hasTicket) {
                 showStartTour();
@@ -211,6 +211,7 @@ function updateLoginStatus() {
             e.stopPropagation();
             logoutUser();
             updateLoginStatus();
+            location.reload(); // Reload page to reset state
         }, { once: true });
     } else {
         // User is logged out
@@ -231,6 +232,9 @@ function checkAutologin() {
         // If admin is logged in, show admin dashboard directly
         if (currentUser.type === ADMIN) {
             showAdminDashboard();
+        } else if (currentUser.hasTicket) {
+            // If visitor with ticket, they can start tour directly
+            document.getElementById('startTourBtn').classList.remove('hidden');
         }
     }
 }

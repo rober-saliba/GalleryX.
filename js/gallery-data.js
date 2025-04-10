@@ -1,4 +1,3 @@
-
 // Gallery data for the virtual tour
 
 // Gallery and artifact data
@@ -126,7 +125,7 @@ const galleries = [
             {
                 id: 'photo1',
                 title: 'Urban Landscape Series',
-                image: 'https://www.moma.org/media/W1siZiIsIjQ2OTUxOCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA5MCAtcmVzaXplIDEzNjZ4MTM2NlUwMDBcdTAwM2UiXV0.jpg?sha=9ce9391c8c3502fa',
+                image: 'https://www.moma.org/media/W1siZiIsIjQ6OTUxOCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA5MCAtcmVzaXplIDEzNjZ4MTM2NlUwMDBcdTAwM2UiXV0.jpg?sha=5ce9391c8c3502fa',
                 description: 'This series of black and white photographs documents urban transformation over three decades in major global cities.',
                 additionalInfo: 'The photographer returned to the same locations every five years to capture the changing cityscape and its inhabitants.',
                 audioSrc: '#'
